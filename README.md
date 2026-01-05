@@ -32,9 +32,6 @@ This tool inverts that paradigm:
 
 **Text is the most inclusive medium.** By starting with text, you ensure everyone—including people with disabilities—can participate in creating better experiences.
 
-## About This Project
-
-This project was built with AI assistance using GitHub Copilot and Claude (Anthropic). The conversational development approach helped rapidly prototype accessibility-first features, implement quality checks, and refine the DSL syntax based on inclusive design principles.
 
 ## Setup
 
@@ -68,3 +65,7 @@ HTML validation covers `index.html`; security and accessibility scans block on c
 The site runs as a static GitHub Pages site. No build step required—the HTML, CSS, and JavaScript files work directly.
 
 Only source files are tracked in git. Dependencies (`node_modules`, `package-lock.json`) are only needed for local quality checks and are excluded via `.gitignore`.
+
+## AI Disclosure
+
+Yes. AI was used in creating this tool. There be dragons! 

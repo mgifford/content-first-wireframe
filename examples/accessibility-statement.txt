@@ -1,0 +1,87 @@
+Title: Accessibility Statement
+URL: /accessibility
+Page language: en
+Page Purpose: Make it clear what has been done for accessibility and where to report problems
+Referrer: Any page of the site or direct link
+Regions: Header, Footer, Main Content, Sidebar
+Interactive Elements: Feedback form
+
+Skip to main [link to #main]
+
+|| Header
+
+Home Page [link to /]
+
+# Accessibility Statement
+
+|| Navigation
+
+Menu [nav]
+* [About]
+* [Projects]
+* [Blog]
+* [Create account / login](link to /user)
+* [français - Language: fr]
+
+|| Main
+
+## Our Commitment to Accessibility
+
+Our website is built to support the latest recommendation of the W3C's WCAG guidelines (presently **WCAG 2.1 AA**). We also work to support our authors by building in elements of **ATAG 2.0**.
+
+This site is presently built in a text-based wireframe format, and the real site will be launched with HTML, CSS & JavaScript following these same accessibility principles.
+
+<Image of a user filling in a form>
+
+---
+
+## Testing Approach
+
+We will be testing this site with a combination of manual and automated techniques. This site will be leveraging best practices that have been widely tested for accessibility.
+
+That said, there will be times when there are barriers we miss, or cannot overcome.
+
+---
+
+## Known Barriers
+
+Known barriers will be addressed as quickly as possible. If there is a barrier we cannot overcome, we will list it here and include any work-arounds which are known.
+
+*(Currently no known barriers)*
+
+---
+
+## Report a Problem
+
+We encourage you to send us feedback if you run into a barrier or have a suggestion to recommend. We understand that accessibility is a journey, and that there will always be room for improvement.
+
+Send us an email to **accessibility@this-website.com**
+
+We recommend including steps that we can take to replicate the error. This may include URLs, screenshots, and details about the interactions.
+
+### Feedback Form
+
+You can also use this form to submit your feedback. If you provide an email address we will respond within two business days.
+
+Name: [________________]
+
+Email: [________________]
+
+URL where problem occurred: [________________]
+
+Screenshot: [[Choose File]] No file selected
+
+Problem (required): [________________
+                     ________________
+                     ________________
+                     ________________]
+
+[[Submit Feedback]]
+
+|| Footer
+
+Footer menu [footer]
+* [Accessibility statement](link to /accessibility)
+* [Privacy policy]
+* [Terms and conditions]
+* [Contact us]

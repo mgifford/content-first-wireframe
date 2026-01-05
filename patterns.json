@@ -1,0 +1,210 @@
+{
+  "version": "1.0",
+  "description": "Text-based wireframe patterns for inclusive design",
+  "categories": [
+    {
+      "name": "Metadata",
+      "description": "Page-level information and context",
+      "patterns": [
+        {
+          "id": "metadata",
+          "label": "Metadata Block",
+          "description": "Complete page metadata with purpose and context",
+          "syntax": "Title: [Page Title]\nURL: /\nPage language: en\nPage purpose: [Purpose]\nReferrer: [Source]\nRegions on the page: Header, Footer, Main\nInteractive Elements: [List elements or None]\nNote: [Optional context]\n\n"
+        },
+        {
+          "id": "skip-link",
+          "label": "Skip Link",
+          "description": "Skip to main content link for keyboard users",
+          "syntax": "Skip to main [link to #main]\n\n"
+        }
+      ]
+    },
+    {
+      "name": "Structure",
+      "description": "Semantic document structure",
+      "patterns": [
+        {
+          "id": "h1",
+          "label": "Heading 1",
+          "description": "Page title (only one per page)",
+          "syntax": "# Heading Text\n\n"
+        },
+        {
+          "id": "h2",
+          "label": "Heading 2",
+          "description": "Major section heading",
+          "syntax": "## Sub-heading\n\n"
+        },
+        {
+          "id": "h3",
+          "label": "Heading 3",
+          "description": "Subsection heading",
+          "syntax": "### Heading Level 3\n\n"
+        },
+        {
+          "id": "h4",
+          "label": "Heading 4",
+          "description": "Minor section heading",
+          "syntax": "#### Heading Level 4\n\n"
+        },
+        {
+          "id": "h5",
+          "label": "Heading 5",
+          "description": "Sub-minor heading",
+          "syntax": "##### Heading Level 5\n\n"
+        },
+        {
+          "id": "h6",
+          "label": "Heading 6",
+          "description": "Lowest level heading",
+          "syntax": "###### Heading Level 6\n\n"
+        },
+        {
+          "id": "landmark",
+          "label": "Landmark",
+          "description": "ARIA landmark region (nav, main, footer, etc.)",
+          "syntax": "|| Landmark Name\n\n"
+        },
+        {
+          "id": "bullet",
+          "label": "Bullet List",
+          "description": "Unordered list item",
+          "syntax": "* List item\n"
+        },
+        {
+          "id": "divider",
+          "label": "Divider",
+          "description": "Horizontal rule / section break",
+          "syntax": "---\n\n"
+        }
+      ]
+    },
+    {
+      "name": "Interaction",
+      "description": "Interactive elements and controls",
+      "patterns": [
+        {
+          "id": "link-undefined",
+          "label": "Link (Undefined)",
+          "description": "Link without specified destination",
+          "syntax": "[Link Text]\n"
+        },
+        {
+          "id": "link",
+          "label": "Link (Defined)",
+          "description": "Link with URL destination",
+          "syntax": "[Link Text](url)\n"
+        },
+        {
+          "id": "button",
+          "label": "Button",
+          "description": "Action button (use for forms/interactions)",
+          "syntax": "[[Button Label]]\n"
+        },
+        {
+          "id": "input",
+          "label": "Input Field",
+          "description": "Form input with label",
+          "syntax": "Label: [________________]\n"
+        },
+        {
+          "id": "input-required",
+          "label": "Required Field",
+          "description": "Required form input",
+          "syntax": "Label (required): [________________]\n"
+        },
+        {
+          "id": "textarea",
+          "label": "Text Area",
+          "description": "Multi-line text input",
+          "syntax": "Label: [________________\n        ________________\n        ________________]\n"
+        },
+        {
+          "id": "select",
+          "label": "Select Dropdown",
+          "description": "Dropdown select menu",
+          "syntax": "Label: [Select option ▼]\n* Option 1\n* Option 2\n* Option 3\n\n"
+        },
+        {
+          "id": "image",
+          "label": "Image",
+          "description": "Image with alt text description",
+          "syntax": "<Image description>\n\n"
+        }
+      ]
+    },
+    {
+      "name": "Layout",
+      "description": "Visual layout and grouping patterns",
+      "patterns": [
+        {
+          "id": "columns",
+          "label": "2 Columns",
+          "description": "Two-column layout",
+          "syntax": "\n[Column 1 Start]\nContent in left column\n[Column 1 End]\n\n[Column 2 Start]\nContent in right column\n[Column 2 End]\n\n"
+        },
+        {
+          "id": "sidebar",
+          "label": "Sidebar Layout",
+          "description": "Sidebar with main content area",
+          "syntax": "\n[Sidebar Start]\nSecondary content (navigation, filters, etc.)\n[Sidebar End]\n\n[Main Content Start]\nPrimary content area\n[Main Content End]\n\n"
+        },
+        {
+          "id": "card",
+          "label": "Card/Block",
+          "description": "Grouped content card",
+          "syntax": "\n[Card/Block Start]\n## Card Title\nContent grouped together visually\n[Card/Block End]\n\n"
+        }
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "name": "Login Page",
+      "file": "examples/login.txt"
+    },
+    {
+      "name": "Create Account",
+      "file": "examples/create-account.txt"
+    },
+    {
+      "name": "User Dashboard",
+      "file": "examples/dashboard.txt"
+    },
+    {
+      "name": "Contact Form",
+      "file": "examples/contact-form.txt"
+    },
+    {
+      "name": "Blog Listing",
+      "file": "examples/blog.txt"
+    },
+    {
+      "name": "Accessibility Statement",
+      "file": "examples/accessibility-statement.txt"
+    },
+    {
+      "name": "Wireframe Editor",
+      "file": "examples/editor.txt"
+    }
+  ],
+  "references": [
+    {
+      "title": "Improving Wireframe Accessibility: A more inclusive Design process",
+      "url": "https://uxdesign.cc/improving-wireframe-accessibility-a-more-inclusive-design-process-d7ab8b6c684f"
+    },
+    {
+      "title": "Shifting left: how introducing accessibility earlier helps the BBC's design system",
+      "url": "https://www.bbc.co.uk/gel/articles/shifting-left"
+    },
+    {
+      "title": "Content First Design",
+      "url": "https://www.uxpin.com/studio/blog/content-first-design/"
+    },
+    {
+      "title": "Priority Guides: A Content-First Alternative to Wireframes",
+      "url": "https://alistapart.com/article/priority-guides-a-content-first-alternative-to-wireframes/"
+    }
+  ]
+}

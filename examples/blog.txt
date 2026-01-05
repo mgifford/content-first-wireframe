@@ -1,0 +1,82 @@
+Title: Design Blog - Latest Articles
+URL: /blog
+Page language: en
+Page Purpose: Display recent blog posts about design and accessibility
+Referrer: Homepage
+Regions: Header, Navigation, Main, Aside, Footer
+Interactive Elements: Links, Search, Filters
+
+Skip to main [link to #main]
+
+|| Header
+# Design & Accessibility Blog
+
+|| Navigation
+[Home] [About] [Articles] [Resources] [Contact]
+
+|| Main
+
+## Latest Articles
+
+Search: [____________________________________] [[Search]]
+
+Filter by: [All Topics ▼]
+
+---
+
+### Featured Post
+
+<Hero image - person using assistive technology>
+
+## Shift-Left Accessibility: Why It Matters
+
+By Sarah Chen | December 15, 2025 | 5 min read
+
+Discover why including accessibility from the start of your design process leads to better outcomes for everyone.
+
+[Read Full Article]
+
+---
+
+### Recent Posts
+
+#### Understanding Screen Reader Navigation
+By Marcus Rodriguez | December 10, 2025 | 8 min read
+[Read More]
+
+#### Text-First Design: A New Approach
+By Jamie Kim | December 5, 2025 | 6 min read
+[Read More]
+
+#### Creating Inclusive User Personas
+By Alex Thompson | December 1, 2025 | 7 min read
+[Read More]
+
+#### Color Contrast and Visual Accessibility
+By Dana Lee | November 28, 2025 | 5 min read
+[Read More]
+
+[Load More Articles]
+
+|| Aside
+
+### Categories
+* [Accessibility] (24)
+* [UX Design] (18)
+* [Development] (12)
+* [Research] (9)
+* [Tools] (15)
+
+### Newsletter
+
+Stay updated with our latest articles.
+
+Email: [____________________________________]
+
+[[Subscribe]]
+
+### Popular Tags
+[#a11y] [#WCAG] [#inclusive-design] [#screen-readers] [#color-contrast]
+
+|| Footer
+© 2026 Design Blog | [RSS Feed] | [Privacy] | [Terms]

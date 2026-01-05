@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content-First Text-Based Wireframe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="container">
+        <!-- Offline Indicator -->
+        <div id="offline-banner" class="offline-banner">
+            <span class="offline-icon">⚠️</span>
+            <span>Offline Mode - Your work is saved locally. Patterns may not load.</span>
+        </div>
+        
+        <!-- Header -->
+        <header>
+            <h1>Content-First Text-Based Wireframe</h1>
+            <div class="header-actions">
+                <div class="document-selector">
+                    <select id="document-select" aria-label="Select document or example">
+                        <option value="current">Current Document</option>
+                    </select>
+                </div>
+                <button id="help-btn" class="help-icon" title="Why text-first design?" aria-label="Learn about text-first design">
+                    ?
+                </button>
+                <button id="save-btn" title="Save wireframe to .txt file">
+                    Save to .txt
+                </button>
+                <div class="file-input-wrapper">
+                    <button id="load-btn-trigger" title="Load wireframe from .txt file">Load from .txt</button>
+                    <input type="file" id="load-btn" accept=".txt" aria-label="Load wireframe from .txt file">
+                </div>
+                <button id="clear-btn" title="Clear the editor">
+                    Clear
+                </button>
+                <button id="copy-llm-btn" title="Copy wireframe with system context for LLM">
+                    Copy for LLM
+                </button>
+                <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode" aria-label="Toggle dark/light mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Left Sidebar: Pattern Library (populated from patterns.json) -->
+            <aside class="sidebar-left" role="complementary" aria-label="Pattern Library">
+                <!-- Patterns will be loaded here dynamically -->
+                <p style="color: var(--text-secondary); font-size: 0.875rem;">Loading patterns...</p>
+            </aside>
+
+            <!-- Center: Editor -->
+            <main id="main-content" class="editor-container" tabindex="-1">
+                <div class="editor-toolbar">
+                    <span class="editor-info">Text-based wireframe editor</span>
+                    <span class="editor-info" id="char-count">0 characters</span>
+                </div>
+                <div class="editor-body">
+                    <pre id="highlight-layer" aria-hidden="true"></pre>
+                    <textarea 
+                        id="wireframe-editor" 
+                        aria-label="Wireframe editor - Write your text-based wireframe here"
+                        placeholder="Start writing your text-based wireframe here...
+
+Click buttons on the left to insert patterns, or type directly.
+Your work is automatically saved."
+                        spellcheck="false"
+                    ></textarea>
+                    <div id="line-numbers" aria-hidden="true"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal-overlay" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Why Text-First Design?</h2>
+                <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>The Problem with Visual-First Wireframing</h3>
+                <p>Traditional tools like <strong>Figma</strong> and <strong>Penpot</strong> prioritize visual layout before content and structure. This approach:</p>
+                <ul>
+                    <li><strong>Excludes screen reader users</strong> from the design process entirely</li>
+                    <li>Makes accessibility an afterthought instead of a foundation</li>
+                    <li>Creates barriers for non-designers to participate in early design decisions</li>
+                    <li>Focuses on pixels before meaning</li>
+                </ul>
+
+                <h3>The Text-First Advantage</h3>
+                <p>This tool inverts that paradigm:</p>
+                <ul>
+                    <li><strong>Shift-Left Accessibility:</strong> Screen reader users can participate in wireframing and co-design</li>
+                    <li><strong>Semantic Structure First:</strong> Define what things ARE before how they LOOK</li>
+                    <li><strong>Inclusive Collaboration:</strong> Anyone comfortable with text documents can contribute</li>
+                    <li><strong>Content-First Thinking:</strong> Forces clarity about information architecture and user flows</li>
+                    <li><strong>LLM-Friendly:</strong> Structured text is perfect for AI-assisted design validation and testing</li>
+                </ul>
+
+                <h3>Comparison</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Visual-First (Figma/Penpot)</th>
+                            <th>Text-First (This Tool)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>First Question</strong></td>
+                            <td>"Where should this go?"</td>
+                            <td>"What is this?"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Screen Reader Access</strong></td>
+                            <td>Cannot use wireframes</td>
+                            <td>Fully accessible wireframes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Collaboration</strong></td>
+                            <td>Requires design tool knowledge</td>
+                            <td>Anyone can read/edit text</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Semantic Structure</strong></td>
+                            <td>Added later (if at all)</td>
+                            <td>Required from the start</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LLM Testing</strong></td>
+                            <td>Difficult to extract structure</td>
+                            <td>Clean, parseable format</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Using Layout Patterns for LLMs</h3>
+                <p>The new <strong>Layout</strong> patterns help you convey visual structure in a way LLMs can understand:</p>
+                <ul>
+                    <li><code>[2 Columns]</code> - Indicates side-by-side content areas</li>
+                    <li><code>[Sidebar]</code> - Shows primary/secondary content hierarchy</li>
+                    <li><code>[Card/Block]</code> - Groups related content visually</li>
+                    <li><code>---</code> - Section dividers for visual separation</li>
+                </ul>
+                <p>When you "Copy for LLM", these layout hints help AI understand not just <em>what</em> content exists, but <em>how</em> it's organized spatially—making it easier to test user flows, validate information architecture, and simulate screen reader navigation.</p>
+
+                <h3>The Workflow</h3>
+                <ol>
+                    <li><strong>Design in text:</strong> Build your wireframe using semantic patterns</li>
+                    <li><strong>Copy for LLM:</strong> Get your design with full context included</li>
+                    <li><strong>Test with AI agents:</strong> Ask LLMs to act as screen reader users, cognitive accessibility auditors, or service designers</li>
+                    <li><strong>Iterate quickly:</strong> Fix issues in text before they become expensive to fix in code</li>
+                </ol>
+
+                <p><strong>Text is the most inclusive medium.</strong> By starting with text, you ensure everyone—including people with disabilities—can participate in creating better experiences.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

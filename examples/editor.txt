@@ -1,0 +1,37 @@
+Title: Accessible Wireframe Editor
+URL: /editor
+Page language: en
+Page Purpose: To allow designers to quickly assemble text-based wireframes.
+Referrer: Direct
+Regions: Header, Navigation, Main, Footer
+Interactive Elements: Buttons, Form Fields
+
+Skip to main [link to #main]
+
+|| Header
+# Wireframe Editor
+
+|| Navigation
+[Load Design] [Save Design] [Export]
+
+|| Main
+
+## Components (Sidebar)
+* [Insert Page Metadata]
+* [Insert Button]
+* [Insert Form Field]
+* [Insert Skip Link]
+* [Insert Landmark]
+* [Insert Heading]
+
+## Canvas (Main)
+Label: Editor Text Area    [____________________________________
+                            ____________________________________
+                            ____________________________________]
+
+## Actions
+[[Copy to Clipboard (includes System Prompt)]]
+[[Reset Canvas]]
+
+|| Footer
+[Privacy Policy] | [Terms of Service] | [Accessibility Statement]

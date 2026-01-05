@@ -1,0 +1,62 @@
+Title: Contact Us Form
+URL: /contact
+Page language: en
+Page Purpose: Allow users to submit questions and feedback to customer support
+Referrer: Help Center
+Regions: Header, Main, Footer
+Interactive Elements: Form Fields, Buttons, Required Fields
+
+Skip to main [link to #main]
+
+|| Header
+# Contact Customer Support
+
+|| Main
+
+## How can we help you?
+
+We typically respond within 24 hours.
+
+### Your Information
+
+First Name: [____________________________________] (Required)
+
+Last Name: [____________________________________] (Required)
+
+Email Address: [____________________________________] (Required)
+
+Phone Number (Optional): [____________________________________]
+
+### Your Message
+
+Subject: [____________________________________] (Required)
+
+Category: [Select a category ▼] (Required)
+* Technical Issue
+* Billing Question
+* Feature Request
+* General Inquiry
+* Other
+
+Message: [____________________________________
+          ____________________________________
+          ____________________________________
+          ____________________________________] (Required)
+
+### Attachments (Optional)
+
+[[Choose File]] No file selected
+
+Supported formats: .jpg, .png, .pdf, .txt (Max 5MB)
+
+---
+
+[[Submit Request]] [Cancel]
+
+### Other ways to reach us:
+* Phone: 1-800-555-0123 (Mon-Fri, 9am-5pm EST)
+* Live Chat: [Start Chat] (Currently available)
+* Email: support@example.com
+
+|| Footer
+[FAQ] | [System Status] | [Privacy Policy]

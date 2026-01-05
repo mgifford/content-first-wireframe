@@ -1,0 +1,35 @@
+Title: Login Page
+URL: /login
+Page language: en
+Page Purpose: Allow users to authenticate and access their account
+Referrer: Homepage
+Regions: Header, Main, Footer
+Interactive Elements: Form Fields, Buttons, Links
+
+Skip to main [link to #main]
+
+|| Header
+# Welcome Back
+
+|| Main
+
+## Sign In
+
+<Logo image - Company name and icon>
+
+Email Address: [____________________________________]
+
+Password: [____________________________________]
+
+[[Sign In]]
+
+[Forgot your password?]
+
+---
+
+## Don't have an account?
+
+[[Create Account]]
+
+|| Footer
+[Help Center] | [Contact Support] | [Privacy Policy]

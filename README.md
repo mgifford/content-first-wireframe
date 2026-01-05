@@ -1,4 +1,4 @@
-# content-first-wireframe
+# Content-First Text-Based Wireframes
 
 A text-based wireframing tool that prioritizes semantic structure and accessibility from the start. Built with a content-first approach using a Domain Specific Language (DSL) that enables screen reader users and non-designers to participate in the design process.
 

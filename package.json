@@ -1,0 +1,17 @@
+{
+  "name": "content-first-wireframe",
+  "version": "0.1.0",
+  "description": "Content-first text wireframe DSL with accessibility-focused quality checks.",
+  "private": true,
+  "scripts": {
+    "lint:html": "html-validate index.html",
+    "scan:security": "node scripts/ci-security.js",
+    "test:a11y": "node scripts/ci-a11y.js",
+    "test": "npm run lint:html && npm run scan:security && npm run test:a11y"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.8.2",
+    "html-validate": "8.7.0",
+    "playwright": "1.41.2"
+  }
+}

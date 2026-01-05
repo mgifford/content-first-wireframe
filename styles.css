@@ -69,6 +69,11 @@ body {
     outline-offset: 2px;
 }
 
+.loading-hint {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
 /* Header */
 header {
     background-color: var(--bg-secondary);
@@ -560,6 +565,101 @@ button:focus-visible {
     border-radius: 3px;
     font-family: 'Monaco', 'Menlo', monospace;
     font-size: 0.875em;
+}
+
+.modal-body label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.modal-body textarea,
+.modal-body input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.modal-body textarea:focus,
+.modal-body input[type="text"]:focus {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 2px;
+}
+
+.share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.share-network-btn {
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.share-network-btn:hover {
+    background-color: var(--button-hover);
+}
+
+.share-network-btn:focus-visible {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 2px;
+}
+
+.share-network-btn.linkedin-btn {
+    background-color: #0077b5;
+    color: white;
+    border-color: #0077b5;
+}
+
+.share-network-btn.linkedin-btn:hover {
+    background-color: #005582;
+}
+
+.share-network-btn.mastodon-btn {
+    background-color: #6364ff;
+    color: white;
+    border-color: #6364ff;
+}
+
+.share-network-btn.mastodon-btn:hover {
+    background-color: #4a4bd9;
+}
+
+.share-network-btn.bluesky-btn {
+    background-color: #1185fe;
+    color: white;
+    border-color: #1185fe;
+}
+
+.share-network-btn.bluesky-btn:hover {
+    background-color: #0d6bd1;
+}
+
+.share-network-btn.copy-btn {
+    background-color: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.share-network-btn.copy-btn:hover {
+    background-color: var(--accent-hover);
 }
 
 .comparison-table {

@@ -33,6 +33,15 @@ const themeIcon = document.getElementById('theme-icon');
 const helpBtn = document.getElementById('help-btn');
 const helpModal = document.getElementById('help-modal');
 const modalCloseBtn = document.getElementById('modal-close-btn');
+const shareBtn = document.getElementById('share-btn');
+const shareModal = document.getElementById('share-modal');
+const shareCloseBtn = document.getElementById('share-close-btn');
+const shareMessage = document.getElementById('share-message');
+const mastodonInstanceInput = document.getElementById('mastodon-instance');
+const shareLinkedInBtn = document.getElementById('share-linkedin');
+const shareMastodonBtn = document.getElementById('share-mastodon');
+const shareBlueskyBtn = document.getElementById('share-bluesky');
+const shareCopyBtn = document.getElementById('share-copy');
 const toast = document.getElementById('toast');
 const charCount = document.getElementById('char-count');
 const sidebar = document.querySelector('.sidebar-left');
@@ -81,7 +90,7 @@ async function loadPatterns() {
 // Render pattern library from JSON
 function renderPatternLibrary() {
     if (!patternsData || !patternsData.categories) {
-        sidebar.innerHTML = '<p style="color: var(--text-secondary); font-size: 0.875rem;">No patterns available</p>';
+        sidebar.innerHTML = '<p class="loading-hint">No patterns available</p>';
         return;
     }
 
@@ -146,6 +155,12 @@ function attachEventListeners() {
     themeToggle.addEventListener('click', toggleTheme);
     helpBtn.addEventListener('click', showHelp);
     modalCloseBtn.addEventListener('click', hideHelp);
+    shareBtn.addEventListener('click', showShare);
+    shareCloseBtn.addEventListener('click', hideShare);
+    shareLinkedInBtn.addEventListener('click', shareLinkedIn);
+    shareMastodonBtn.addEventListener('click', shareMastodon);
+    shareBlueskyBtn.addEventListener('click', shareBluesky);
+    shareCopyBtn.addEventListener('click', copyShareMessage);
     
     // Close modal on overlay click
     helpModal.addEventListener('click', (e) => {
@@ -158,6 +173,15 @@ function attachEventListeners() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && helpModal.classList.contains('show')) {
             hideHelp();
+        }
+        if (e.key === 'Escape' && shareModal.classList.contains('show')) {
+            hideShare();
+        }
+    });
+
+    shareModal.addEventListener('click', (e) => {
+        if (e.target === shareModal) {
+            hideShare();
         }
     });
 }
@@ -670,6 +694,70 @@ function showHelp() {
 function hideHelp() {
     helpModal.classList.remove('show');
     helpBtn.focus();
+}
+
+// Share modal helpers
+function buildShareMessage() {
+    const titleMatch = editor.value.match(/^Title:\s*(.+)$/m);
+    const title = titleMatch && titleMatch[1].trim() ? titleMatch[1].trim() : 'Content-first wireframe';
+    return `${title} — drafted in the content-first wireframe tool.`;
+}
+
+function getShareUrl() {
+    const href = window.location.href;
+    return /^https?:/i.test(href) ? href.split('#')[0] : 'https://github.com/mgifford/content-first-wireframe';
+}
+
+function showShare() {
+    shareMessage.value = buildShareMessage();
+    if (!mastodonInstanceInput.value) {
+        mastodonInstanceInput.value = 'mastodon.social';
+    }
+    shareModal.classList.add('show');
+    shareMessage.focus();
+}
+
+function hideShare() {
+    shareModal.classList.remove('show');
+    shareBtn.focus();
+}
+
+function openShareWindow(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+    showToast('Opening share dialog...');
+}
+
+function shareLinkedIn() {
+    const message = shareMessage.value.trim() || buildShareMessage();
+    const shareUrl = getShareUrl();
+    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&summary=${encodeURIComponent(message)}`;
+    openShareWindow(url);
+}
+
+function shareMastodon() {
+    const message = shareMessage.value.trim() || buildShareMessage();
+    const instance = (mastodonInstanceInput.value || 'mastodon.social')
+        .replace(/^https?:\/\//, '')
+        .replace(/\/$/, '');
+    const url = `https://${instance}/share?text=${encodeURIComponent(message)}`;
+    openShareWindow(url);
+}
+
+function shareBluesky() {
+    const message = shareMessage.value.trim() || buildShareMessage();
+    const url = `https://bsky.app/intent/compose?text=${encodeURIComponent(message)}`;
+    openShareWindow(url);
+}
+
+async function copyShareMessage() {
+    const message = shareMessage.value.trim() || buildShareMessage();
+    try {
+        await navigator.clipboard.writeText(message);
+        showToast('Share message copied. Paste into your post.');
+    } catch (err) {
+        console.error('Failed to copy share message:', err);
+        showToast('Unable to copy share message.');
+    }
 }
 
 // Online/Offline Detection

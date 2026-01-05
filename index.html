@@ -14,7 +14,7 @@
             <span class="offline-icon">⚠️</span>
             <span>Offline Mode - Your work is saved locally. Patterns may not load.</span>
         </div>
-        
+
         <!-- Header -->
         <header>
             <h1>Content-First Text-Based Wireframe</h1>
@@ -24,23 +24,26 @@
                         <option value="current">Current Document</option>
                     </select>
                 </div>
-                <button id="help-btn" class="help-icon" title="Why text-first design?" aria-label="Learn about text-first design">
+                <button id="help-btn" class="help-icon" type="button" title="Why text-first design?" aria-label="Learn about text-first design">
                     ?
                 </button>
-                <button id="save-btn" title="Save wireframe to .txt file">
+                <button id="save-btn" type="button" title="Save wireframe to .txt file">
                     Save to .txt
                 </button>
                 <div class="file-input-wrapper">
-                    <button id="load-btn-trigger" title="Load wireframe from .txt file">Load from .txt</button>
+                    <button id="load-btn-trigger" type="button" title="Load wireframe from .txt file">Load from .txt</button>
                     <input type="file" id="load-btn" accept=".txt" aria-label="Load wireframe from .txt file">
                 </div>
-                <button id="clear-btn" title="Clear the editor">
+                <button id="clear-btn" type="button" title="Clear the editor">
                     Clear
                 </button>
-                <button id="copy-llm-btn" title="Copy wireframe with system context for LLM">
+                <button id="copy-llm-btn" type="button" title="Copy wireframe with system context for LLM">
                     Copy for LLM
                 </button>
-                <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode" aria-label="Toggle dark/light mode">
+                <button id="share-btn" type="button" title="Share on social media">
+                    Share
+                </button>
+                <button id="theme-toggle" class="theme-toggle" type="button" title="Toggle dark/light mode" aria-label="Toggle dark/light mode">
                     <span id="theme-icon">🌙</span>
                 </button>
             </div>
@@ -49,9 +52,9 @@
         <!-- Main Layout -->
         <div class="main-layout">
             <!-- Left Sidebar: Pattern Library (populated from patterns.json) -->
-            <aside class="sidebar-left" role="complementary" aria-label="Pattern Library">
+            <aside class="sidebar-left" aria-label="Pattern Library">
                 <!-- Patterns will be loaded here dynamically -->
-                <p style="color: var(--text-secondary); font-size: 0.875rem;">Loading patterns...</p>
+                <p class="loading-hint">Loading patterns...</p>
             </aside>
 
             <!-- Center: Editor -->
@@ -80,12 +83,35 @@ Your work is automatically saved."
     <!-- Toast Notification -->
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal-overlay" role="dialog" aria-labelledby="share-modal-title" aria-modal="true">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="share-modal-title">Share this tool</h2>
+                <button class="modal-close" id="share-close-btn" type="button" aria-label="Close share modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Promote the Content-First Text-Based Wireframe on your professional network. Customize the message below or share as-is on LinkedIn, Mastodon, or Bluesky.</p>
+                <label for="share-message">Your share message:</label>
+                <textarea id="share-message" rows="3" aria-label="Your share message"></textarea>
+                <label for="mastodon-instance">Mastodon instance (without https://):</label>
+                <input type="text" id="mastodon-instance" placeholder="mastodon.social" aria-label="Mastodon instance">
+                <div class="share-buttons">
+                    <button id="share-linkedin" type="button" class="share-network-btn linkedin-btn">Share on LinkedIn</button>
+                    <button id="share-mastodon" type="button" class="share-network-btn mastodon-btn">Share on Mastodon</button>
+                    <button id="share-bluesky" type="button" class="share-network-btn bluesky-btn">Share on Bluesky</button>
+                    <button id="share-copy" type="button" class="share-network-btn copy-btn">Copy message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Help Modal -->
     <div id="help-modal" class="modal-overlay" role="dialog" aria-labelledby="modal-title" aria-modal="true">
         <div class="modal">
             <div class="modal-header">
                 <h2 id="modal-title">Why Text-First Design?</h2>
-                <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+                <button class="modal-close" id="modal-close-btn" type="button" aria-label="Close modal">&times;</button>
             </div>
             <div class="modal-body">
                 <h3>The Problem with Visual-First Wireframing</h3>
@@ -111,9 +137,9 @@ Your work is automatically saved."
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th>Aspect</th>
-                            <th>Visual-First (Figma/Penpot)</th>
-                            <th>Text-First (This Tool)</th>
+                            <th scope="col">Aspect</th>
+                            <th scope="col">Visual-First (Figma/Penpot)</th>
+                            <th scope="col">Text-First (This Tool)</th>
                         </tr>
                     </thead>
                     <tbody>

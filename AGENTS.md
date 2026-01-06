@@ -124,6 +124,37 @@ You are a **Service Designer** mapping the journey across wireframes.
 
 ---
 
+## 6. Agent: The Penpot Designer
+**Use Case:** Convert text-based wireframes into visual Penpot design files.
+
+**Prompt:**
+You are an **expert wireframe designer**. Your team has generated a content-first, text-based wireframe that outlines the key elements of a page they've been designing. 
+
+I need you to convert this into a visual `.penpot` file that can be seen visually to help us prepare for production.
+
+**Instructions:**
+1. **Provide all assets** needed for a complete, validated Penpot file
+2. **Ensure visual representation** while carrying forward the semantics expressed in the text wireframe
+3. **Critical accessibility requirements:**
+   - Preserve accessibility in the visual design
+   - Meet WCAG 2.2 AA standards
+   - Maintain semantic structure and landmark regions
+   - Ensure proper heading hierarchy and contrast ratios
+
+4. **Deliverables:**
+   - Complete `.penpot` file with all boards, components, and layers properly organized
+   - Clear naming for all objects and groups
+   - Consistent typography, spacing, and color system
+   - Reusable components for buttons, inputs, and cards
+   - All assets packaged and ready for import into Penpot
+
+5. **After creating the file:** Remind the user how to import it into https://design.penpot.app and what to do if they don't have an account.
+
+**How to use in the web tool:**
+Click **"Export to Penpot"** button in the wireframe editor. This copies the wireframe + Penpot design instructions to your clipboard. Paste into ChatGPT, Gemini, Claude, or your preferred LLM.
+
+---
+
 ## Quality Checks (mirrored from ui-palette-generator)
 Run these on every meaningful change to keep the DSL outputs reliable and accessible.
 

@@ -24,6 +24,7 @@ Default to Markdown to show structure
 // DOM Elements
 const editor = document.getElementById('wireframe-editor');
 const copyLLMBtn = document.getElementById('copy-llm-btn');
+const exportPenpotBtn = document.getElementById('export-penpot-btn');
 const saveBtn = document.getElementById('save-btn');
 const loadBtn = document.getElementById('load-btn');
 const loadBtnTrigger = document.getElementById('load-btn-trigger');
@@ -69,6 +70,7 @@ async function init() {
     updateCharCount();
     updateLineNumbers();
     updateHighlight();
+    updateButtonVisibility();
 }
 
 // Load patterns from JSON
@@ -128,6 +130,16 @@ function renderPatternLibrary() {
     });
 }
 
+// Toggle visibility of content-dependent buttons
+function updateButtonVisibility() {
+    const hasContent = editor.value.trim().length > 0;
+    const contentButtons = [copyLLMBtn, exportPenpotBtn, saveBtn, clearBtn];
+    
+    contentButtons.forEach(btn => {
+        btn.style.display = hasContent ? 'block' : 'none';
+    });
+}
+
 // Event Listeners
 function attachEventListeners() {
     // Editor auto-save and validation
@@ -137,6 +149,7 @@ function attachEventListeners() {
         updateLineNumbers();
         updateHighlight();
         validateWireframe();
+        updateButtonVisibility();
     });
 
     // Sync line numbers and highlight on scroll
@@ -147,6 +160,7 @@ function attachEventListeners() {
 
     // Action buttons
     copyLLMBtn.addEventListener('click', copyForLLM);
+    exportPenpotBtn.addEventListener('click', exportToPenpot);
     saveBtn.addEventListener('click', saveToFile);
     loadBtnTrigger.addEventListener('click', () => loadBtn.click());
     loadBtn.addEventListener('change', loadFromFile);
@@ -216,6 +230,46 @@ async function copyForLLM() {
     try {
         await navigator.clipboard.writeText(content);
         showToast('Copied to clipboard! Ready for LLM.');
+    } catch (err) {
+        console.error('Failed to copy:', err);
+        showToast('Failed to copy. Please try again.');
+    }
+}
+
+// Export to Penpot (with Penpot generation instructions)
+async function exportToPenpot() {
+    const PENPOT_EXPORT_PROMPT = `You are an expert wireframe designer. Your team has generated a content-first, text-based wireframe that outlines the key elements of a page that they have been designing. I need you to take this and convert it into a visual .penpot file that can be seen visually to help us prepare for production. 
+
+Provide all of the assets that are needed for a complete and validated Penpot file. Ensure that it has all of the elements to make it visually representative and to carry forward the semantics expressed in the text wireframe. 
+
+**Important accessibility requirements:**
+- It is critical that accessibility is preserved in the visual design
+- The wireframe you create in Penpot must meet WCAG 2.2 AA standards
+- Maintain semantic structure and landmark regions from the original wireframe
+- Ensure proper heading hierarchy and contrast ratios
+
+**Deliverables:**
+- A complete .penpot file with all boards, components, and layers properly organized
+- Clear naming for all objects and groups
+- Consistent typography, spacing, and color system
+- Reusable components for buttons, inputs, and cards
+- All assets packaged and ready for import into Penpot
+
+If you have any concerns or questions about accessibility or design choices, please let me know.
+
+**After you've created the file:**
+Please remind me how to import it into https://design.penpot.app and what to do if I don't already have an account.
+
+---
+
+## Wireframe to Convert:
+`;
+
+    const content = PENPOT_EXPORT_PROMPT + '\n\n' + editor.value;
+    
+    try {
+        await navigator.clipboard.writeText(content);
+        showToast('Penpot export instructions copied to clipboard! Paste into ChatGPT, Gemini, or Claude.');
     } catch (err) {
         console.error('Failed to copy:', err);
         showToast('Failed to copy. Please try again.');

@@ -29,9 +29,19 @@ This tool inverts that paradigm:
 2. **Copy for LLM:** Get your design with full context included
 3. **Test with AI agents:** Ask LLMs to act as screen reader users, cognitive accessibility auditors, or service designers
 4. **Iterate quickly:** Fix issues in text before they become expensive to fix in code
+5. **Export to Penpot:** Use the "Export to Penpot" button to generate instructions for creating a Penpot file
 
 **Text is the most inclusive medium.** By starting with text, you ensure everyone—including people with disabilities—can participate in creating better experiences.
 
+## Exporting to Penpot
+
+Click the **"Export to Penpot"** button in the web tool to copy wireframe content with Penpot-specific instructions. Paste the result into ChatGPT, Gemini, Claude, or another LLM to generate a `.penpot` file. Then:
+
+1. Download the generated `.penpot` file
+2. Open [penpot.app](https://penpot.app)
+3. Create a new design
+4. Import the `.penpot` file
+5. Refine visually in Penpot
 
 ## Setup
 

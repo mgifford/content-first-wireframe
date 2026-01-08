@@ -1,0 +1,79 @@
+name: Quality Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: ["*"]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies (no browser downloads)
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 1
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+        run: npm ci --ignore-scripts
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: HTML validation
+        run: npx html-validate "index.html"
+
+      - name: Start local server
+        run: |
+          python3 -m http.server 4173 >/tmp/ci-server.log 2>&1 &
+          echo $! > /tmp/server.pid
+
+      - name: Wait for server readiness
+        run: |
+          for i in {1..10}; do
+            if curl -fsS http://127.0.0.1:4173 >/dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Server did not start" >&2
+          exit 1
+
+      - name: Accessibility scan (axe-core + Playwright)
+        env:
+          BASE_URL: http://127.0.0.1:4173
+        run: node scripts/ci-a11y.js
+
+      - name: Security scan (static)
+        run: node scripts/ci-security.js
+
+      - name: Upload server log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-log
+          path: /tmp/ci-server.log
+
+      - name: Stop local server
+        if: always()
+        run: |
+          if [ -f /tmp/server.pid ]; then
+            kill "$(cat /tmp/server.pid)" || true
+          fi

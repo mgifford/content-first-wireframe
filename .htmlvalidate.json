@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "elements": ["html5"],
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-inline-style": "warn",
+    "no-trailing-whitespace": "warn",
+    "void-style": "error",
+    "attribute-allowed-values": "error"
+  }
+}

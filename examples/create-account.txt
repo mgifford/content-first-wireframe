@@ -1,0 +1,60 @@
+Title: Create Account
+URL: /user/create
+Page language: en
+Page Purpose: Allow the user to create an account
+Referrer: Login or direct link
+Regions: Header, Footer, Main Content
+Interactive Elements: Form fields, Submit button
+
+Skip to main [link to #main]
+
+|| Header
+
+Home Page [link to /]
+
+# Create Account
+
+|| Navigation
+
+Menu [nav]
+* [About]
+* [Projects]
+* [Blog]
+* [Create account / login](link to /user)
+* [français - Language: fr]
+
+|| Main
+
+## Register for an Account
+
+Name (required): [________________]
+
+Email (required): [________________]
+
+Password (required): [________________]
+
+Confirm Password (required): [________________]
+
+[[Submit]]
+
+---
+
+### After Submission:
+
+**Approved:** Thanks for registering, check for a confirmation message in your email and click on the link to activate your account.
+
+**Denied:** Please check your ((name, email, password)) to verify.
+
+---
+
+### Already have an account?
+
+[Sign in instead](link to /user)
+
+|| Footer
+
+Footer menu [footer]
+* [Accessibility statement](link to /accessibility)
+* [Privacy policy]
+* [Terms and conditions]
+* [Contact us]

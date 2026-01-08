@@ -1,0 +1,56 @@
+Title: User Dashboard
+URL: /dashboard
+Page language: en
+Page Purpose: Main hub for users to view their account overview and navigate to key features
+Referrer: Login page
+Regions: Header, Navigation, Main, Aside, Footer
+Interactive Elements: Buttons, Links, Data Tables
+
+Skip to main [link to #main]
+
+|| Header
+# Dashboard
+
+[Profile] [Settings] [[Logout]]
+
+|| Navigation
+* [Home]
+* [Projects]
+* [Analytics]
+* [Reports]
+* [Team]
+
+|| Main
+
+## Welcome back, [User Name]!
+
+### Recent Activity
+* Project "Website Redesign" was updated 2 hours ago - [View]
+* New comment on "Mobile App Wireframes" - [View]
+* Report "Q4 Analytics" is ready - [Download]
+
+### Quick Actions
+[[Create New Project]]
+[[Upload Design]]
+[[Invite Team Member]]
+
+## Your Projects (3)
+
+### Active Projects
+* Website Redesign - Last edited: Today - [Open] [Share]
+* Mobile App Wireframes - Last edited: Yesterday - [Open] [Share]
+* Email Templates - Last edited: 3 days ago - [Open] [Share]
+
+[[View All Projects]]
+
+|| Aside
+
+### Tips & Updates
+<Illustration of person using design tool>
+
+#### New Feature Available
+You can now export your wireframes directly to HTML.
+[Learn More]
+
+|| Footer
+© 2026 Design Co. | [Terms] | [Privacy] | [Help Center]

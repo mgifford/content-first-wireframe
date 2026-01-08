@@ -28,6 +28,18 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libglib2.0-0 \
+            libdbus-1-3 \
+            libatk1.0-0 \
+            libpangoft2-1.0-0 \
+            libx11-6 \
+            libxext6 \
+            libxrender1
+
       - name: Install dependencies (no browser downloads)
         env:
           PUPPETEER_SKIP_DOWNLOAD: 1
@@ -35,7 +47,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Install Playwright browser
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
 
       - name: HTML validation
         run: npx html-validate "index.html"

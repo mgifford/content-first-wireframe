@@ -1,0 +1,257 @@
+Title: Product Details Page
+URL: /products/wireless-headphones
+Page language: en
+Page Purpose: Display product information with responsive layout and accessibility features
+Referrer: Product listing page
+Regions: Header, Navigation, Main, Aside, Footer
+Interactive Elements: Buttons, Image Gallery, Quantity Selector, Reviews
+Note: Demonstrates width percentages, grid layouts, and responsive design annotations
+
+Skip to main [link to #main]
+
+|| Header
+# TechStore @class:site-header
+
+[Search] [Cart (2)] [Account]
+
+|| Navigation
+@width:100% @layout:horizontal-nav
+
+* [Home]
+* [Products]
+* [Deals]
+* [Support]
+* [About]
+
+|| Main
+@class:product-page @layout:grid @width:100%
+
+[Main Content Area] @width:70% @class:product-main
+@note:On mobile (< 768px), width becomes 100% and stacks vertically
+
+### Product Images @class:image-gallery @width:100%
+
+[Image Gallery Container] @behavior:click-to-enlarge @aria-roledescription:"image gallery"
+
+<Main product image - Wireless headphones in black> @width:100% @aspect-ratio:1:1 @class:featured-image
+@alt:"Premium wireless over-ear headphones in matte black finish"
+@behavior:Click to open lightbox modal with zoom capability
+
+[Thumbnail Grid] @layout:flex @gap:8px @width:100%
+
+<Thumbnail 1 - Front view> @width:60px @selected @aria-label:"View front angle"
+<Thumbnail 2 - Side view> @width:60px @aria-label:"View side angle"
+<Thumbnail 3 - Folded view> @width:60px @aria-label:"View folded position"
+<Thumbnail 4 - Case view> @width:60px @aria-label:"View carrying case"
+
+---
+
+## Premium Wireless Headphones
+@class:product-title
+
+### $299.99
+@class:price @aria-label:"Price: two hundred ninety-nine dollars and ninety-nine cents"
+
+[Original: $399.99] @class:price-original @strikethrough
+
+**Save 25%** @class:discount-badge @role:status
+
+Rating: ★★★★☆ (4.5 out of 5 stars) @aria-label:"Average rating 4.5 out of 5 based on 1,247 reviews"
+[1,247 Reviews] @class:review-link
+
+---
+
+### Product Description @width:100%
+
+Experience premium sound quality with active noise cancellation, 30-hour battery life, and comfortable over-ear design perfect for travel and work.
+
+**Key Features:**
+* Active Noise Cancellation (ANC)
+* 30-hour battery life
+* Quick charge: 10 min = 5 hours
+* Premium leather ear cushions
+* Bluetooth 5.0 with multipoint connection
+* Foldable design with carrying case
+
+---
+
+### Options
+
+[Color Options] @class:color-selector @role:radiogroup @aria-label:"Select color"
+
+( ) Matte Black @selected @data-color:#000000
+( ) Silver Gray @data-color:#C0C0C0
+( ) Navy Blue @data-color:#000080
+
+@behavior:Color selection updates main image and price may vary
+
+---
+
+Quantity: [Select quantity ▼] @aria-label:"Select quantity" @default:1
+@width:120px @class:quantity-selector
+
+* 1
+* 2
+* 3
+* 4
+* 5+
+
+In Stock @role:status @class:stock-status @aria-live:polite
+
+---
+
+[Action Area] @width:100% @layout:flex @gap:16px
+
+[[Add to Cart]] @width:60% @class:button-primary @aria-describedby:cart-status
+[Add to Wishlist] @width:35% @class:button-secondary @aria-label:"Add to wishlist"
+
+<Cart status message region> @aria-live:polite @id:cart-status
+@note:Announces "Added to cart" when item is successfully added
+
+---
+
+### Shipping & Returns @class:shipping-info
+
+* Free shipping on orders over $50
+* 30-day return policy
+* 2-year warranty included
+
+---
+
+[Details Section] @width:100%
+
+[Accordion: Specifications] @aria-expanded:false @behavior:click-to-expand
+@class:details-accordion
+
+## Technical Specifications @role:button @aria-controls:specs-panel
+
+[Specs Panel] @id:specs-panel @hidden @role:region
+
+* Driver size: 40mm
+* Frequency response: 20Hz - 20kHz
+* Impedance: 32 ohms
+* Weight: 250g
+* Bluetooth: 5.0 with AAC/aptX
+* Charging: USB-C
+
+[Accordion: Compatibility] @aria-expanded:false @behavior:click-to-expand
+
+## What's Compatible? @role:button @aria-controls:compat-panel
+
+[Compat Panel] @id:compat-panel @hidden @role:region
+
+Works with all Bluetooth-enabled devices including smartphones, tablets, computers, and gaming consoles.
+
+---
+
+### Customer Reviews @width:100% @id:reviews
+
+#### Overall Rating
+@class:rating-summary
+
+4.5 out of 5 stars (1,247 reviews) @aria-label:"Average rating 4.5 out of 5 stars based on 1,247 reviews"
+
+[Rating Breakdown] @layout:horizontal-bars
+
+★★★★★ (847) @width:68% @class:rating-bar
+★★★★☆ (265) @width:21% @class:rating-bar
+★★★☆☆ (95) @width:8% @class:rating-bar
+★★☆☆☆ (28) @width:2% @class:rating-bar
+★☆☆☆☆ (12) @width:1% @class:rating-bar
+
+[[Write a Review]]
+
+---
+
+[Review Item 1] @class:review-card
+
+**Great sound quality!** ★★★★★
+by Alex M. - Verified Purchase - 2 weeks ago
+
+The noise cancellation is excellent and battery life exceeds expectations. Comfortable for all-day wear.
+
+[Helpful?] [[Yes (45)]] [[No (2)]]
+
+---
+
+[Review Item 2] @class:review-card
+
+**Good, but heavy** ★★★★☆
+by Jordan K. - Verified Purchase - 1 month ago
+
+Sound quality is amazing but they feel a bit heavy after a few hours. Still recommend!
+
+[Helpful?] [[Yes (23)]] [[No (5)]]
+
+[[Load More Reviews]] @behavior:ajax-load-next-10
+
+|| Aside
+@width:28% @class:product-sidebar @position:sticky
+@note:On mobile (< 768px), appears below main content
+
+### You Might Also Like
+@class:recommendations
+
+[Product Card 1] @width:100% @class:rec-card
+<Product image - Wireless earbuds>
+**Compact Earbuds**
+$129.99
+★★★★☆ (823)
+[View]
+
+[Product Card 2] @width:100% @class:rec-card
+<Product image - Headphone case>
+**Premium Case**
+$39.99
+★★★★★ (445)
+[View]
+
+[Product Card 3] @width:100% @class:rec-card
+<Product image - Charging dock>
+**Charging Dock**
+$49.99
+★★★★☆ (287)
+[View]
+
+---
+
+### Need Help?
+
+* [Chat with Support] @behavior:opens-chat-widget
+* [Call: 1-800-TECH-HELP]
+* [Email Support]
+* [FAQ]
+
+|| Footer
+@width:100% @class:site-footer
+
+[Footer Column 1] @width:25%
+### Shop
+* [All Products]
+* [New Arrivals]
+* [Best Sellers]
+* [Sale]
+
+[Footer Column 2] @width:25%
+### Support
+* [Contact Us]
+* [Shipping Info]
+* [Returns]
+* [Warranty]
+
+[Footer Column 3] @width:25%
+### Company
+* [About Us]
+* [Careers]
+* [Press]
+* [Blog]
+
+[Footer Column 4] @width:25%
+### Legal
+* [Privacy Policy]
+* [Terms of Service]
+* [Accessibility]
+
+---
+
+© 2026 TechStore. All rights reserved.

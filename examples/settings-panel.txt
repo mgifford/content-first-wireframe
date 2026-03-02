@@ -1,0 +1,292 @@
+Title: Application Settings Panel
+URL: /settings
+Page language: en
+Page Purpose: Manage application preferences with organized accordion sections
+Referrer: User menu
+Regions: Header, Navigation, Main, Footer
+Interactive Elements: Accordions, Toggles, Buttons, Form Fields
+Note: Demonstrates accordion pattern, state management, and accessibility annotations
+
+Skip to main [link to #main]
+
+|| Header
+# Settings @class:page-header
+
+|| Navigation
+@class:settings-nav @aria-label:"Settings navigation"
+
+* [Profile]
+* [Account]
+* [Privacy]
+* [Notifications]
+* [Appearance]
+* [Advanced]
+
+|| Main
+@width:80% @class:settings-main
+
+## Manage Your Preferences
+@class:page-subtitle
+
+Use the sections below to customize your experience. Changes are saved automatically.
+
+<Auto-save status indicator> @aria-live:polite @role:status @id:save-status
+@note:Displays "Saving..." or "All changes saved" messages
+
+---
+
+### Account Settings
+@class:accordion-section
+
+[Section: Profile Information] @role:button @aria-expanded:true @aria-controls:profile-panel @class:accordion-header @id:profile-header
+@behavior:Click to toggle panel visibility. Screen readers announce expanded/collapsed state.
+
+[Panel: Profile Information] @role:region @aria-labelledby:profile-header @id:profile-panel @visible @class:accordion-panel
+
+Display Name: [Sarah Chen                              ]
+@width:100% @maxlength:50
+
+Email Address: [sarah.chen@example.com                 ] (required)
+@width:100% @aria-describedby:email-hint
+
+<Email hint> @id:email-hint @class:field-hint
+This email is used for account recovery and notifications
+
+Phone Number: [(555) 123-4567                          ] (optional)
+@width:100% @aria-describedby:phone-hint
+
+<Phone hint> @id:phone-hint @class:field-hint
+Format: (XXX) XXX-XXXX
+
+[[Update Profile]] @aria-describedby:save-status
+
+---
+
+[Section: Password & Security] @role:button @aria-expanded:false @aria-controls:security-panel @class:accordion-header @id:security-header
+@behavior:Click to expand. Panel is collapsed by default.
+
+[Panel: Password & Security] @role:region @aria-labelledby:security-header @id:security-panel @hidden @class:accordion-panel
+@note:Content hidden until section is expanded
+
+Current Password: [______________________________] (required)
+@type:password @aria-label:"Enter current password"
+
+New Password: [______________________________] (required)
+@type:password @aria-describedby:password-requirements
+
+<Password requirements> @id:password-requirements @class:field-hint
+* At least 12 characters
+* One uppercase letter
+* One number
+* One special character
+
+Confirm New Password: [______________________________] (required)
+@type:password @aria-label:"Confirm new password"
+
+[[Change Password]]
+
+---
+
+#### Two-Factor Authentication
+@class:security-option
+
+[x] Enable two-factor authentication @checked @aria-describedby:2fa-description
+@behavior:Toggle shows/hides setup instructions
+
+<2FA Description> @id:2fa-description @class:option-description
+Adds an extra layer of security by requiring a code from your phone when signing in.
+
+[Setup Instructions Panel] @visible @state:enabled
+@note:Visible when 2FA is enabled
+
+1. Download an authenticator app (Google Authenticator, Authy, etc.)
+2. Scan this QR code: <QR code image> @alt:"QR code for two-factor authentication setup"
+3. Enter the 6-digit code from your app: [______] @maxlength:6 @pattern:\d{6}
+
+[[Verify & Enable]]
+
+[Backup Codes] @behavior:click-to-reveal
+Shows list of 10 single-use backup codes for account recovery
+
+---
+
+[Section: Privacy Settings] @role:button @aria-expanded:false @aria-controls:privacy-panel @class:accordion-header @id:privacy-header
+
+[Panel: Privacy Settings] @role:region @aria-labelledby:privacy-header @id:privacy-panel @hidden @class:accordion-panel
+
+#### Who can see your profile?
+@role:radiogroup @aria-label:"Profile visibility options"
+
+( ) Everyone @id:visibility-public
+( ) Registered users only @id:visibility-users @checked
+( ) Only me @id:visibility-private
+
+@behavior:Selection updates privacy level immediately with confirmation message
+
+---
+
+#### Data Collection
+@class:privacy-options
+
+[x] Allow analytics to improve the service @checked @aria-describedby:analytics-hint
+<Analytics hint> @id:analytics-hint @class:option-description
+Anonymous usage data helps us improve features and performance
+
+[ ] Share data with third-party partners @aria-describedby:partners-hint
+<Partners hint> @id:partners-hint @class:option-description
+We never sell your data. Partners include analytics and security providers.
+
+[ ] Participate in user research studies @aria-describedby:research-hint
+<Research hint> @id:research-hint @class:option-description
+Occasionally we'll invite you to provide feedback on new features
+
+---
+
+[[Download My Data]] @aria-describedby:download-hint
+<Download hint> @id:download-hint @class:action-description
+Request a copy of all your data in JSON format (may take up to 48 hours)
+
+[[Delete My Account]] @class:danger-action @aria-describedby:delete-warning
+<Delete warning> @id:delete-warning @class:warning-text @role:alert
+⚠️ This action cannot be undone. All your data will be permanently deleted.
+
+---
+
+[Section: Notification Preferences] @role:button @aria-expanded:true @aria-controls:notifications-panel @class:accordion-header @id:notifications-header
+@note:Expanded by default as frequently accessed section
+
+[Panel: Notification Preferences] @role:region @aria-labelledby:notifications-header @id:notifications-panel @visible @class:accordion-panel
+
+#### Email Notifications
+@class:notification-group
+
+[x] Account activity (sign-ins, password changes) @checked @disabled @aria-describedby:required-notif
+<Required notification> @id:required-notif @class:field-hint
+Required for account security
+
+[x] Weekly summary of activity @checked
+[ ] Product updates and new features
+[ ] Tips and best practices
+[ ] Marketing and promotional emails
+
+---
+
+#### Push Notifications
+@class:notification-group
+
+@note:Only available if browser supports notifications
+@state:permission-granted
+
+[x] Real-time alerts @checked @aria-describedby:push-hint
+<Push hint> @id:push-hint @class:field-hint
+Instant notifications for important events
+
+[x] Team mentions and messages @checked
+[ ] Comments on your posts
+[ ] New follower notifications
+
+---
+
+#### Notification Quiet Hours
+@class:time-picker-group
+
+Do not disturb between:
+[10:00 PM ▼] and [7:00 AM ▼]
+@behavior:Time dropdowns with 15-minute intervals
+
+[ ] Enable quiet hours @aria-label:"Enable do not disturb schedule"
+
+---
+
+[Section: Appearance] @role:button @aria-expanded:false @aria-controls:appearance-panel @class:accordion-header @id:appearance-header
+
+[Panel: Appearance] @role:region @aria-labelledby:appearance-header @id:appearance-panel @hidden @class:accordion-panel
+
+#### Theme
+@role:radiogroup @aria-label:"Select theme"
+
+( ) Light @id:theme-light
+( ) Dark @id:theme-dark @checked
+( ) Auto (matches system) @id:theme-auto
+
+@behavior:Theme changes apply immediately to entire interface
+
+---
+
+#### Text Size
+@class:slider-control
+
+[Slider: Text Size] @type:range @min:12 @max:20 @value:16 @step:1 @aria-valuemin:12 @aria-valuemax:20 @aria-valuenow:16 @aria-label:"Text size in pixels"
+
+Current: 16px @aria-live:polite
+@behavior:Updates preview text in real-time as slider moves
+
+<Sample Text> @class:preview-text @style:font-size:16px
+The quick brown fox jumps over the lazy dog.
+
+---
+
+#### Compact Mode
+@class:density-option
+
+[ ] Use compact spacing (shows more content on screen)
+@aria-label:"Enable compact mode for denser layout"
+@behavior:Reduces padding and margins throughout interface
+
+---
+
+[Section: Advanced Settings] @role:button @aria-expanded:false @aria-controls:advanced-panel @class:accordion-header @id:advanced-header
+@note:Contains technical options for power users
+
+[Panel: Advanced Settings] @role:region @aria-labelledby:advanced-header @id:advanced-panel @hidden @class:accordion-panel
+
+⚠️ Warning: These settings are for advanced users only
+@role:alert @class:warning-banner
+
+#### Developer Mode
+@class:developer-options
+
+[ ] Enable developer console @aria-describedby:dev-console-hint
+<Dev console hint> @id:dev-console-hint @class:option-description
+Access debugging tools and API logs (requires page reload)
+
+[ ] Show element IDs in UI @aria-describedby:show-ids-hint
+<Show IDs hint> @id:show-ids-hint @class:option-description
+Displays technical identifiers for all interactive elements
+
+---
+
+#### Experimental Features
+@class:experimental-options
+
+[ ] Beta features @aria-describedby:beta-hint
+<Beta hint> @id:beta-hint @class:option-description
+⚠️ May be unstable. Features may change or be removed.
+
+Current beta features:
+* AI-powered suggestions
+* Collaborative editing
+* Advanced keyboard shortcuts
+
+---
+
+#### Reset Settings
+
+[[Reset to Defaults]] @class:danger-action @aria-describedby:reset-warning
+<Reset warning> @id:reset-warning @class:warning-text
+This will restore all settings to their original values
+
+---
+
+### Help & Support
+@class:help-section
+
+Need assistance?
+* [View Settings Guide]
+* [Contact Support]
+* [Report a Bug]
+
+|| Footer
+[Privacy Policy] | [Terms of Service] | [Accessibility Statement]
+
+@note:Footer remains accessible even when accordion panels are collapsed

@@ -157,6 +157,60 @@
           "syntax": "\n[Card/Block Start]\n## Card Title\nContent grouped together visually\n[Card/Block End]\n\n"
         }
       ]
+    },
+    {
+      "name": "Annotations",
+      "description": "Style, behavior, and accessibility annotations",
+      "patterns": [
+        {
+          "id": "width-annotation",
+          "label": "Width Annotation",
+          "description": "Specify width as percentage or constraint",
+          "syntax": "[Element] @width:50%\n"
+        },
+        {
+          "id": "behavior-annotation",
+          "label": "Behavior Annotation",
+          "description": "Describe dynamic behavior or interaction",
+          "syntax": "[Element] @behavior:expands-on-click\n"
+        },
+        {
+          "id": "aria-annotation",
+          "label": "Accessibility Annotation",
+          "description": "ARIA attributes and accessibility notes",
+          "syntax": "[Element] @aria-label:\"descriptive label\"\n"
+        },
+        {
+          "id": "state-annotation",
+          "label": "State Annotation",
+          "description": "Current state or condition",
+          "syntax": "[Element] @state:expanded\n"
+        },
+        {
+          "id": "class-id-annotation",
+          "label": "Class/ID Reference",
+          "description": "CSS class or ID for implementation",
+          "syntax": "[Element] @class:button-primary @id:submit-btn\n"
+        },
+        {
+          "id": "tabs-pattern",
+          "label": "Tabs Component",
+          "description": "Tab interface with multiple panels",
+          "syntax": "\n## Tab Group @role:tablist\n[Tab 1] @selected @aria-controls:panel1\n[Tab 2] @aria-controls:panel2\n\n[Panel 1] @role:tabpanel @id:panel1 @visible\nContent for tab 1\n\n[Panel 2] @role:tabpanel @id:panel2 @hidden\nContent for tab 2\n\n"
+        },
+        {
+          "id": "accordion-pattern",
+          "label": "Accordion",
+          "description": "Expandable/collapsible sections",
+          "syntax": "\n## Section 1 @role:button @aria-expanded:true\nContent visible by default\n\n## Section 2 @role:button @aria-expanded:false\nContent initially hidden\n\n"
+        },
+        {
+          "id": "modal-pattern",
+          "label": "Modal/Dialog",
+          "description": "Modal dialog overlay",
+          "syntax": "\n[Modal: Title] @role:dialog @aria-modal:true @state:hidden\n\n## Modal Heading\n\nModal content here\n\n[[Close]] @aria-label:\"Close dialog\"\n\n"
+        }
+      ]
     }
   ],
   "examples": [
@@ -187,6 +241,18 @@
     {
       "name": "Wireframe Editor",
       "file": "examples/editor.txt"
+    },
+    {
+      "name": "Tabs Component (with annotations)",
+      "file": "examples/tabs-component.txt"
+    },
+    {
+      "name": "Product Page (with width & layout)",
+      "file": "examples/product-page.txt"
+    },
+    {
+      "name": "Settings Panel (accordion & states)",
+      "file": "examples/settings-panel.txt"
     }
   ],
   "references": [

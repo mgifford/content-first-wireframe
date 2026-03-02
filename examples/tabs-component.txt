@@ -1,0 +1,140 @@
+Title: User Profile with Tabs
+URL: /profile
+Page language: en
+Page Purpose: Display user information organized into tabs for easy navigation
+Referrer: Dashboard
+Regions: Header, Main, Footer
+Interactive Elements: Tabs, Buttons, Links
+Note: Demonstrates tab pattern with behavior annotations and ARIA attributes
+
+Skip to main [link to #main]
+
+|| Header
+# User Profile
+
+[Back to Dashboard]
+
+|| Main
+
+## Profile Information @class:profile-container @width:80%
+
+<Profile photo - circular image 120px> @alt:"Sarah Chen profile photo" @class:avatar
+
+### Sarah Chen
+UX Designer | San Francisco, CA
+
+---
+
+## Tab Navigation @role:tablist @aria-label:"Profile sections"
+
+[Overview] @role:tab @aria-selected:true @aria-controls:panel-overview @id:tab-overview @class:tab-active
+[Activity] @role:tab @aria-selected:false @aria-controls:panel-activity @id:tab-activity
+[Settings] @role:tab @aria-selected:false @aria-controls:panel-settings @id:tab-settings
+[Notifications] @role:tab @aria-selected:false @aria-controls:panel-notifications @id:tab-notifications
+
+@behavior:Click tab to show corresponding panel, hide others. Arrow keys navigate between tabs.
+@implementation:Keyboard navigation (left/right arrows), Home/End keys, automatic activation
+
+---
+
+[Panel: Overview] @role:tabpanel @id:panel-overview @aria-labelledby:tab-overview @visible
+
+### About
+@width:100%
+
+Senior UX Designer with 8 years of experience in creating accessible, user-centered designs. Passionate about inclusive design and accessibility advocacy.
+
+### Skills
+@layout:tag-cloud
+
+* Wireframing
+* Prototyping
+* User Research
+* Accessibility (WCAG 2.2)
+* Design Systems
+* Figma & Sketch
+
+### Recent Projects @class:project-grid @layout:cards
+
+[Card Start] @width:48% @class:project-card
+#### Website Redesign
+Status: In Progress
+Last updated: 2 days ago
+[View Project]
+[Card End]
+
+[Card Start] @width:48% @class:project-card
+#### Mobile App
+Status: Completed
+Last updated: 1 week ago
+[View Project]
+[Card End]
+
+---
+
+[Panel: Activity] @role:tabpanel @id:panel-activity @aria-labelledby:tab-activity @hidden
+
+@note:This panel is hidden until the Activity tab is selected
+@behavior:Loads recent activity via AJAX when tab is first activated
+
+### Recent Activity
+
+* Commented on "Homepage wireframe" - 2 hours ago
+* Updated "Navigation design" - 5 hours ago
+* Shared "Mobile mockups" with team - Yesterday
+* Created new project "Email templates" - 2 days ago
+
+[[Load More Activity]]
+
+---
+
+[Panel: Settings] @role:tabpanel @id:panel-settings @aria-labelledby:tab-settings @hidden
+
+@note:This panel is hidden until the Settings tab is selected
+
+### Account Settings
+
+#### Display Name
+Current name: [Sarah Chen                    ]
+
+#### Email Address (required)
+Current email: [sarah.chen@example.com       ]
+
+#### Notification Preferences
+[ ] Email notifications @aria-label:"Enable email notifications"
+[x] Desktop notifications @aria-label:"Enable desktop notifications" @checked
+[ ] Mobile push notifications @aria-label:"Enable mobile push notifications"
+
+[[Save Settings]] @aria-describedby:save-status
+[Cancel]
+
+<Live region for status messages> @aria-live:polite @id:save-status
+
+---
+
+[Panel: Notifications] @role:tabpanel @id:panel-notifications @aria-labelledby:tab-notifications @hidden
+
+@note:This panel is hidden until the Notifications tab is selected
+@behavior:Badge count on tab shows unread count (3)
+
+### Notifications (3 unread)
+
+[Notification 1] @state:unread @class:notification-item
+**Team Mention**
+John mentioned you in "Q1 Planning" - 1 hour ago
+[Mark as Read] [View]
+
+[Notification 2] @state:unread @class:notification-item
+**Project Update**
+"Website Redesign" has new comments - 3 hours ago
+[Mark as Read] [View]
+
+[Notification 3] @state:read @class:notification-item
+**System Update**
+New features available in the editor - Yesterday
+[View]
+
+[[Mark All as Read]]
+
+|| Footer
+[Help] | [Privacy] | [Terms] | [Contact Support]

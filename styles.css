@@ -726,3 +726,44 @@ button:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-secondary);
 }
+
+/* Experimental Notice Footer */
+.experimental-footer {
+    background-color: #fff3cd;
+    color: #5a3e00;
+    border-top: 2px solid #ffc107;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    flex-shrink: 0;
+}
+
+.experimental-footer p {
+    margin: 0.25rem 0;
+}
+
+.experimental-footer a {
+    color: #3d2900;
+    font-weight: 600;
+}
+
+.experimental-footer a:hover,
+.experimental-footer a:focus {
+    color: #3d2900;
+    text-decoration: underline;
+}
+
+[data-theme="dark"] .experimental-footer {
+    background-color: #332600;
+    color: #ffd454;
+    border-top-color: #ffc107;
+}
+
+[data-theme="dark"] .experimental-footer a {
+    color: #ffc107;
+}
+
+[data-theme="dark"] .experimental-footer a:hover,
+[data-theme="dark"] .experimental-footer a:focus {
+    color: #ffd454;
+}

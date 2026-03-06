@@ -2,6 +2,10 @@
 
 A text-based wireframing tool that prioritizes semantic structure and accessibility from the start. Built with a content-first approach using a Domain Specific Language (DSL) that enables screen reader users and non-designers to participate in the design process.
 
+> ⚠️ **Experimental Project** — This tool is still in early development. Most of the content and code was generated with AI and **has not been fully validated** in real-world use. Please treat everything here as a starting point, not a finished product.
+>
+> 💬 **We need your feedback!** If you try this tool, please [share your results in the issue queue](https://github.com/mgifford/content-first-wireframe/issues)—both positive and negative experiences are valuable. Include links and references so claims can be discussed.
+
 ## Why Text-First Design?
 
 ### The Problem with Visual-First Wireframing

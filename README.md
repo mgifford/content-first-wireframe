@@ -80,6 +80,54 @@ The site runs as a static GitHub Pages site. No build step required—the HTML, 
 
 Only source files are tracked in git. Dependencies (`node_modules`, `package-lock.json`) are only needed for local quality checks and are excluded via `.gitignore`.
 
-## AI Disclosure
+## In-Browser AI Writing Assistance
+
+This tool includes optional author-side writing assistance powered by **Chrome Built-in AI** (the Prompt API). All AI processing happens locally in your browser — no data leaves your machine, no API keys are needed.
+
+### Opt-in
+
+AI writing tools are **off by default**. When you first open the tool in a browser that supports Chrome Built-in AI, a small banner appears in the sidebar asking if you want to try them:
+
+> "Your browser supports on-device AI writing assistance. Would you like to try it?"
+
+- Click **Turn on AI tools** to enable them for this browser. Your choice is saved in `localStorage` and the tools activate immediately without a page reload.
+- Click **No thanks** to dismiss the banner. The tools stay hidden and the banner is not shown again.
+
+To change your mind later, clear site data (DevTools → Application → Storage → Clear site data) to reset the preference.
+
+To turn AI tools off after enabling them, click the **Turn off AI tools** link at the bottom of the AI Writing Tools panel. This saves the dismissed preference to `localStorage`.
+
+### What the AI assists with
+
+| Feature | What it does |
+|---|---|
+| **Fix spelling & grammar** | Fixes spelling and grammar errors in selected text or the whole document, preserving meaning and tone |
+| **Rewrite in plain language** | Rewrites text for clarity at your chosen reading level (general public, Grade 6, Grade 8, or public service standard) |
+| **Review headings** | Flags vague, noun-only, or poorly task-framed headings and suggests improvements |
+| **Replace filler with placeholders** | Detects lorem ipsum, TBD, and vague filler; replaces each with a semantic placeholder describing what real content belongs there |
+| **Review language quality** | Identifies overlong sentences, passive voice, undefined acronyms, inconsistent terminology, and missing purpose statements |
+
+### What the AI does NOT do
+
+- **Does not invent content or policy.** Every prompt explicitly instructs the AI not to add new facts.
+- **Does not auto-apply any changes.** Every suggestion is shown as a diff preview; the author clicks **Apply** or **Dismiss**.
+- **Does not silently rewrite.** All output is reviewed before it touches the document.
+- **Does not send data to a server.** Processing is entirely in-browser via the Chrome AI API.
+- **Does not generate visual layouts.** This is an editorial tool, not a design generator.
+
+### Browser requirements
+
+Chrome Built-in AI uses the experimental **Prompt API** (`window.ai.languageModel`), which is available in:
+
+- Chrome 127+ with the **Prompt API for Gemini Nano** flag enabled (`chrome://flags/#prompt-api-for-gemini-nano`)
+- Chrome Dev or Canary channels where the flag may be on by default
+
+When AI is **not available**, the AI Writing Tools section shows an explanatory message and all five AI buttons are hidden. The rest of the tool works exactly as before — **authoring without AI is always supported.**
+
+### Privacy
+
+All AI processing happens locally in your browser using Chrome's on-device Gemini Nano model. No wireframe content, suggestions, or usage data is transmitted to any external server.
+
+
 
 Yes. AI was used in creating this tool. There be dragons! 

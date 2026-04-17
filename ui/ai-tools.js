@@ -277,26 +277,56 @@
         }
     }
 
-    // ── Initialisation ────────────────────────────────────────────────────────
+    // ── Preference storage ────────────────────────────────────────────────────
 
-    async function initAITools() {
-        var section       = document.getElementById('ai-tools-section');
-        var unavailableEl = document.getElementById('ai-tools-unavailable');
-        var buttonsDiv    = document.getElementById('ai-tools-buttons');
-        if (!section) return;
+    var PREF_KEY = 'ai-tools-preference'; // 'enabled' | 'dismissed' | absent
 
-        var available = await window.ChromeAI.detect();
+    function getPreference() {
+        try { return localStorage.getItem(PREF_KEY); } catch (_) { return null; }
+    }
 
-        if (!available) {
-            if (unavailableEl) unavailableEl.hidden = false;
-            if (buttonsDiv)    buttonsDiv.hidden    = true;
-            return;
+    function setPreference(value) {
+        try { localStorage.setItem(PREF_KEY, value); } catch (_) { /* ignore */ }
+    }
+
+    // ── Opt-in banner ─────────────────────────────────────────────────────────
+
+    /** Shows the one-time opt-in banner and wires up Accept / Decline. */
+    function showOptInBanner() {
+        var banner      = document.getElementById('ai-optin-banner');
+        var acceptBtn   = document.getElementById('ai-optin-accept-btn');
+        var declineBtn  = document.getElementById('ai-optin-decline-btn');
+        if (!banner) return;
+
+        banner.hidden = false;
+
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', function () {
+                setPreference('enabled');
+                banner.hidden = true;
+                activateAITools();
+            });
         }
 
-        if (unavailableEl) unavailableEl.hidden = true;
-        if (buttonsDiv)    buttonsDiv.hidden    = false;
+        if (declineBtn) {
+            declineBtn.addEventListener('click', function () {
+                setPreference('dismissed');
+                banner.hidden = true;
+            });
+        }
+    }
 
-        // Wire up feature buttons
+    // ── Activate (show buttons, wire handlers) ────────────────────────────────
+
+    function activateAITools() {
+        var descEl      = document.getElementById('ai-tools-description');
+        var buttonsDiv  = document.getElementById('ai-tools-buttons');
+        var disableBtn  = document.getElementById('ai-disable-btn');
+
+        if (descEl)     descEl.hidden     = false;
+        if (buttonsDiv) buttonsDiv.hidden = false;
+
+        // Feature buttons
         var grammarBtn      = document.getElementById('ai-grammar-btn');
         var plainLangBtn    = document.getElementById('ai-plain-language-btn');
         var headingsBtn     = document.getElementById('ai-headings-btn');
@@ -308,6 +338,42 @@
         if (headingsBtn)     headingsBtn.addEventListener('click', handleReviewHeadings);
         if (placeholdersBtn) placeholdersBtn.addEventListener('click', handleReplaceFiller);
         if (lintingBtn)      lintingBtn.addEventListener('click', handleLintLanguage);
+
+        // "Turn off" button
+        if (disableBtn) {
+            disableBtn.addEventListener('click', function () {
+                setPreference('dismissed');
+                if (buttonsDiv) buttonsDiv.hidden = true;
+                if (descEl)     descEl.hidden     = true;
+            });
+        }
+    }
+
+    // ── Initialisation ────────────────────────────────────────────────────────
+
+    async function initAITools() {
+        var section       = document.getElementById('ai-tools-section');
+        var unavailableEl = document.getElementById('ai-tools-unavailable');
+        if (!section) return;
+
+        var available = await window.ChromeAI.detect();
+
+        if (!available) {
+            if (unavailableEl) unavailableEl.hidden = false;
+            return;
+        }
+
+        // Chrome AI is available — check stored preference
+        var pref = getPreference();
+
+        if (pref === 'enabled') {
+            // User previously opted in — activate immediately
+            activateAITools();
+        } else if (!pref) {
+            // No preference stored yet — show one-time opt-in banner
+            showOptInBanner();
+        }
+        // pref === 'dismissed' → do nothing (tools stay hidden, no banner)
 
         // Close results modal on overlay click
         var modal = document.getElementById('ai-results-modal');

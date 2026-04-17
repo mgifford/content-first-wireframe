@@ -81,7 +81,25 @@
                 <!-- AI Writing Tools -->
                 <section class="pattern-group ai-tools-section" id="ai-tools-section" aria-labelledby="ai-tools-heading">
                     <h2 id="ai-tools-heading">AI Writing Tools</h2>
-                    <p class="ai-tools-description">
+
+                    <!-- Opt-in banner: shown once when Chrome AI is available and no preference is stored -->
+                    <div class="ai-optin-banner" id="ai-optin-banner" hidden role="group" aria-labelledby="ai-optin-heading">
+                        <p id="ai-optin-heading" class="ai-optin-msg">
+                            Your browser supports on-device AI writing assistance.
+                            Would you like to try it?
+                            All processing stays on your device.
+                        </p>
+                        <div class="ai-optin-actions">
+                            <button type="button" id="ai-optin-accept-btn" class="ai-optin-accept-btn">
+                                Turn on AI tools
+                            </button>
+                            <button type="button" id="ai-optin-decline-btn" class="ai-optin-decline-btn">
+                                No thanks
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="ai-tools-description" id="ai-tools-description" hidden>
                         Editorial tools for grammar, plain language, and content quality.
                         All AI processing happens locally in your browser.
                     </p>
@@ -113,6 +131,9 @@
                         </button>
                         <button type="button" id="ai-linting-btn" class="pattern-btn ai-tool-btn" aria-busy="false">
                             Review language quality
+                        </button>
+                        <button type="button" id="ai-disable-btn" class="ai-disable-btn">
+                            Turn off AI tools
                         </button>
                     </div>
                 </section>

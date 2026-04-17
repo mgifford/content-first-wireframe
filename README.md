@@ -84,6 +84,19 @@ Only source files are tracked in git. Dependencies (`node_modules`, `package-loc
 
 This tool includes optional author-side writing assistance powered by **Chrome Built-in AI** (the Prompt API). All AI processing happens locally in your browser — no data leaves your machine, no API keys are needed.
 
+### Opt-in
+
+AI writing tools are **off by default**. When you first open the tool in a browser that supports Chrome Built-in AI, a small banner appears in the sidebar asking if you want to try them:
+
+> "Your browser supports on-device AI writing assistance. Would you like to try it?"
+
+- Click **Turn on AI tools** to enable them for this browser. Your choice is saved in `localStorage` and the tools activate immediately without a page reload.
+- Click **No thanks** to dismiss the banner. The tools stay hidden and the banner is not shown again.
+
+To change your mind later, clear site data (DevTools → Application → Storage → Clear site data) to reset the preference.
+
+To turn AI tools off after enabling them, click the **Turn off AI tools** link at the bottom of the AI Writing Tools panel. This saves the dismissed preference to `localStorage`.
+
 ### What the AI assists with
 
 | Feature | What it does |

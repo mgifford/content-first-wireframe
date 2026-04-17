@@ -11,8 +11,6 @@
  * AI suggestions are never auto-applied — the author always reviews first.
  */
 (function () {
-    'use strict';
-
     // ── Helpers ──────────────────────────────────────────────────────────────
 
     function escapeHtml(str) {

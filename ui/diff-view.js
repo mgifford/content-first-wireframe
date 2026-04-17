@@ -9,7 +9,7 @@
     const ns = (window.ChromeAI = window.ChromeAI || {});
 
     // Maximum word count for word-level diff; beyond this, use plain comparison.
-    var DIFF_WORD_LIMIT = 600;
+    const DIFF_WORD_LIMIT = 600;
 
     /**
      * Escapes HTML entities. Applied to all content before insertion.

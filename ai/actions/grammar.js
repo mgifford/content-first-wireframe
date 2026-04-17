@@ -18,7 +18,7 @@
             return { error: 'No text provided.' };
         }
 
-        let session;
+        var session;
         try {
             session = await ns.createSession(ns.prompts.grammar.system);
             const result = await session.prompt(ns.prompts.grammar.user(text));

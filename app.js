@@ -96,6 +96,10 @@ function renderPatternLibrary() {
         return;
     }
 
+    // Preserve static sections that were added to the sidebar in HTML
+    // (e.g. the AI Writing Tools section) before clearing dynamic content.
+    const aiToolsSection = document.getElementById('ai-tools-section');
+
     sidebar.innerHTML = '';
 
     patternsData.categories.forEach(category => {
@@ -128,6 +132,11 @@ function renderPatternLibrary() {
         groupDiv.appendChild(buttonsDiv);
         sidebar.appendChild(groupDiv);
     });
+
+    // Re-append preserved static sections after pattern groups
+    if (aiToolsSection) {
+        sidebar.appendChild(aiToolsSection);
+    }
 }
 
 // Toggle visibility of content-dependent buttons

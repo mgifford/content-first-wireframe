@@ -767,3 +767,320 @@ button:focus-visible {
 [data-theme="dark"] .experimental-footer a:focus {
     color: #ffd454;
 }
+
+/* Ensure HTML hidden attribute always wins over flex/block display rules */
+[hidden] {
+    display: none !important;
+}
+
+/* ── AI Writing Tools ──────────────────────────────────────────────────────── */
+
+.ai-tools-section {
+    border-top: 1px solid var(--border-color);
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+/* Opt-in banner */
+.ai-optin-banner {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-primary);
+    border-radius: 4px;
+    padding: 0.625rem 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.ai-optin-msg {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.ai-optin-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.ai-optin-accept-btn {
+    font-size: 0.8rem;
+    padding: 0.375rem 0.625rem;
+    background-color: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.ai-optin-accept-btn:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.ai-optin-decline-btn {
+    font-size: 0.8rem;
+    padding: 0.375rem 0.625rem;
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.ai-optin-decline-btn:hover {
+    background-color: var(--button-hover);
+    color: var(--text-primary);
+}
+
+.ai-tools-description {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.ai-tools-unavailable {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    line-height: 1.4;
+}
+
+.ai-tools-unavailable a {
+    color: var(--accent-primary);
+}
+
+.ai-level-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.25rem 0;
+}
+
+.ai-level-group label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.ai-level-group select {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    font-size: 0.8125rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.ai-level-group select:focus-visible {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 2px;
+}
+
+.ai-tool-btn {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.ai-tool-btn:hover {
+    background-color: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+}
+
+.ai-tool-btn[aria-busy="true"] {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.ai-disable-btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    text-align: left;
+}
+
+.ai-disable-btn:hover {
+    background-color: var(--button-hover);
+    color: var(--text-primary);
+}
+
+/* ── AI Results Panel (modal variant) ────────────────────────────────────── */
+
+.ai-results-panel {
+    width: min(700px, 95vw);
+}
+
+.ai-results-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.ai-apply-btn {
+    background-color: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.ai-apply-btn:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.ai-dismiss-btn {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+/* ── Diff view ────────────────────────────────────────────────────────────── */
+
+.ai-diff-preview {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+}
+
+.diff-add {
+    background-color: #d4edda;
+    color: #155724;
+    text-decoration: none;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+.diff-del {
+    background-color: #f8d7da;
+    color: #721c24;
+    text-decoration: line-through;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+[data-theme="dark"] .diff-add {
+    background-color: #1a3d27;
+    color: #6fcf97;
+}
+
+[data-theme="dark"] .diff-del {
+    background-color: #3d1a1a;
+    color: #eb5757;
+}
+
+.ai-diff-plain {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+}
+
+/* ── Annotation list (headings + linting) ─────────────────────────────────── */
+
+.ai-annotation-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    background-color: var(--bg-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.ai-annotation-content {
+    flex: 1;
+}
+
+.ai-dismiss-item {
+    flex-shrink: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.ai-dismiss-item:hover {
+    background-color: var(--button-hover);
+    color: var(--text-primary);
+}
+
+/* ── AI result status messages ───────────────────────────────────────────── */
+
+.ai-preview-info {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.ai-no-issues {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+}
+
+[data-theme="dark"] .ai-no-issues {
+    color: #6fcf97;
+    background-color: #1a3d27;
+    border-color: #2d6a3f;
+}
+
+.ai-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+}
+
+[data-theme="dark"] .ai-error {
+    color: #eb5757;
+    background-color: #3d1a1a;
+    border-color: #6b2d2d;
+}
+
+.ai-no-changes {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.ai-diff-fallback {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}

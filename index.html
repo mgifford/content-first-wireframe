@@ -77,6 +77,66 @@
             <aside class="sidebar-left" aria-label="Pattern Library">
                 <!-- Patterns will be loaded here dynamically -->
                 <p class="loading-hint">Loading patterns...</p>
+
+                <!-- AI Writing Tools -->
+                <section class="pattern-group ai-tools-section" id="ai-tools-section" aria-labelledby="ai-tools-heading">
+                    <h2 id="ai-tools-heading">AI Writing Tools</h2>
+
+                    <!-- Opt-in banner: shown once when Chrome AI is available and no preference is stored -->
+                    <div class="ai-optin-banner" id="ai-optin-banner" hidden role="group" aria-labelledby="ai-optin-heading">
+                        <p id="ai-optin-heading" class="ai-optin-msg">
+                            Your browser supports on-device AI writing assistance.
+                            Would you like to try it?
+                            All processing stays on your device.
+                        </p>
+                        <div class="ai-optin-actions">
+                            <button type="button" id="ai-optin-accept-btn" class="ai-optin-accept-btn">
+                                Turn on AI tools
+                            </button>
+                            <button type="button" id="ai-optin-decline-btn" class="ai-optin-decline-btn">
+                                No thanks
+                            </button>
+                        </div>
+                    </div>
+
+                    <p class="ai-tools-description" id="ai-tools-description" hidden>
+                        Editorial tools for grammar, plain language, and content quality.
+                        All AI processing happens locally in your browser.
+                    </p>
+                    <p class="ai-tools-unavailable" id="ai-tools-unavailable" hidden>
+                        Local AI assistance requires Chrome with built-in AI support.
+                        <a href="https://developer.chrome.com/docs/ai/built-in" target="_blank" rel="noopener noreferrer">Learn more</a>
+                    </p>
+                    <div class="pattern-buttons" id="ai-tools-buttons" hidden>
+                        <button type="button" id="ai-grammar-btn" class="pattern-btn ai-tool-btn" aria-busy="false">
+                            Fix spelling &amp; grammar
+                        </button>
+                        <button type="button" id="ai-plain-language-btn" class="pattern-btn ai-tool-btn" aria-busy="false">
+                            Rewrite in plain language
+                        </button>
+                        <div class="ai-level-group">
+                            <label for="ai-plain-language-level">Plain language level:</label>
+                            <select id="ai-plain-language-level">
+                                <option value="general">General public</option>
+                                <option value="grade6">Grade 6</option>
+                                <option value="grade8">Grade 8</option>
+                                <option value="public-service">Public service standard</option>
+                            </select>
+                        </div>
+                        <button type="button" id="ai-headings-btn" class="pattern-btn ai-tool-btn" aria-busy="false">
+                            Review headings
+                        </button>
+                        <button type="button" id="ai-placeholders-btn" class="pattern-btn ai-tool-btn" aria-busy="false">
+                            Replace filler with placeholders
+                        </button>
+                        <button type="button" id="ai-linting-btn" class="pattern-btn ai-tool-btn" aria-busy="false">
+                            Review language quality
+                        </button>
+                        <button type="button" id="ai-disable-btn" class="ai-disable-btn">
+                            Turn off AI tools
+                        </button>
+                    </div>
+                </section>
             </aside>
 
             <!-- Center: Editor -->
@@ -220,6 +280,22 @@ Your work is automatically saved."
         </div>
     </div>
 
+    <!-- AI Results Panel -->
+    <div id="ai-results-modal" class="modal-overlay" role="dialog" aria-labelledby="ai-results-title" aria-modal="true">
+        <div class="modal ai-results-panel">
+            <div class="modal-header">
+                <h2 id="ai-results-title">AI Suggestion</h2>
+                <button class="modal-close" id="ai-results-close-btn" type="button" aria-label="Close AI results">&times;</button>
+            </div>
+            <div class="modal-body" id="ai-results-body">
+                <!-- AI results rendered here by JavaScript -->
+            </div>
+            <div class="ai-results-footer" id="ai-results-footer">
+                <!-- Apply/Dismiss buttons added by JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <!-- Experimental Notice Footer -->
     <footer class="experimental-footer">
         <p>⚠️ <strong>Experimental:</strong> This tool is still in early development. Most of this site was generated with AI and has not been fully validated in real-world use.</p>
@@ -227,5 +303,19 @@ Your work is automatically saved."
     </footer>
 
     <script src="app.js"></script>
+    <!-- Chrome Built-in AI writing assistance -->
+    <script src="ai/capability.js"></script>
+    <script src="ai/prompts/grammar.js"></script>
+    <script src="ai/prompts/plain-language.js"></script>
+    <script src="ai/prompts/headings.js"></script>
+    <script src="ai/prompts/placeholders.js"></script>
+    <script src="ai/prompts/linting.js"></script>
+    <script src="ai/actions/grammar.js"></script>
+    <script src="ai/actions/plain-language.js"></script>
+    <script src="ai/actions/headings.js"></script>
+    <script src="ai/actions/placeholders.js"></script>
+    <script src="ai/actions/linting.js"></script>
+    <script src="ui/diff-view.js"></script>
+    <script src="ui/ai-tools.js"></script>
 </body>
 </html>

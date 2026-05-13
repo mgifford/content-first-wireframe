@@ -1,57 +1,99 @@
 # Definition of Done for the Report
 
-A report is done when it meets all of the criteria below.
+This definition of done is pre-filled for the current state of the `content-first-wireframe` project. It captures what can already be confirmed from the repository and what still needs explicit review before the report is considered complete.
 
-## 1. Purpose and scope are clear
+## Report purpose
 
-- The report states its purpose in plain language.
-- The intended audience is named.
-- The scope, limits, and assumptions are explicit.
+The report should explain the current state of the Content-First Text-Based Wireframes project, what it already does, what claims are supported by the repository, and what still needs validation before the project can be described as mature or production-ready.
 
-## 2. Content is complete
+## Intended audience
 
-- The main findings are clearly summarized.
-- Evidence, examples, or references support each major claim.
-- Open questions, risks, and gaps are documented.
-- Recommended next steps are specific and prioritized.
+- Repository maintainers
+- Contributors
+- Accessibility-focused collaborators
+- People evaluating whether to test, adopt, or extend the tool
 
-## 3. Accessibility and inclusive design are addressed
+## Scope
 
-- The report reflects the project's content-first, accessibility-first approach.
-- Accessibility impacts, barriers, and opportunities are described where relevant.
-- Language is plain, specific, and easy to scan.
-- Headings and lists create a logical reading order.
+The report is done when it accurately covers the current repository as it exists today:
 
-## 4. Actions are usable
+- A text-first wireframing tool with an accessibility-first, content-first approach
+- A static GitHub Pages site with no build step required for the app itself
+- Export support for Penpot-oriented prompting
+- Optional in-browser AI writing assistance using Chrome Built-in AI
 
-- Each recommendation has a clear owner, outcome, or decision point when possible.
-- The report distinguishes between confirmed findings, opinions, and future ideas.
-- Readers can tell what should happen next without needing extra explanation.
+The report should not overstate maturity. The README already says the project is experimental and has not been fully validated in real-world use, so the report must preserve that limitation.
 
-## 5. Quality checks are complete
+## Findings the report can already state
 
-- Facts, links, and references have been checked.
-- Terminology is consistent throughout the report.
-- Spelling, grammar, and formatting have been reviewed.
-- Any supporting artifacts are linked or attached.
+These points are supported by the repository and can be written into the report now:
 
-## 6. Review and sign-off are complete
+- The project uses a text-based DSL to prioritize semantics and information architecture before visual layout.
+- The project is explicitly framed around accessibility and inclusive collaboration.
+- The workflow described in the repository is: design in text, copy for LLM use, test with AI agents, iterate, and export to Penpot.
+- The site is designed to run as a static GitHub Pages site.
+- AI writing assistance is optional, runs in the browser, and is intended to keep user content local to the device.
 
-- Relevant stakeholders have reviewed the report.
-- Feedback has been addressed or logged.
-- The final version is ready to share, archive, or act on.
+## Evidence the report should include
 
-## Ready-to-use checklist
+The report should cite repository evidence for its main claims, including:
 
-- [ ] Purpose is clear
-- [ ] Audience is clear
-- [ ] Scope and assumptions are documented
-- [ ] Findings are supported by evidence
-- [ ] Risks, gaps, and open questions are included
-- [ ] Recommendations are specific and prioritized
-- [ ] Accessibility and inclusive design considerations are covered
-- [ ] Language is plain and scannable
-- [ ] Facts, links, and references are verified
-- [ ] Stakeholder review is complete
-- [ ] Feedback is addressed or tracked
-- [ ] Final version is ready to publish or hand off
+- `README.md` for project goals, workflow, experimental status, and setup
+- `AGENTS.md` for the design philosophy and accessibility-first DSL guidance
+- `package.json` for the documented quality-check commands
+- `index.html`, `app.js`, and related UI files for implemented product behavior when specific features are described
+
+## Required cautions and limitations
+
+The report is not done unless it makes these limits clear:
+
+- The project is still experimental.
+- AI-assisted and generated content appears in the project and has not been fully validated.
+- Accessibility intent is strong, but real-world validation is still needed.
+- A full local `npm test` run is currently blocked by a Playwright module error in the accessibility test path, so automated accessibility verification is not fully reliable in the present environment.
+
+## Accessibility and inclusive design coverage
+
+The report is done when it clearly reflects the repository's stated accessibility goals:
+
+- Accessibility is treated as a starting point, not a later add-on.
+- Screen reader users and non-designers are part of the intended design process.
+- Reading order, clear labels, plain language, and semantic structure are treated as core quality measures.
+- Any claims about accessibility outcomes are separated from accessibility intentions and verified results.
+
+## Actionability requirements
+
+The report is done when a reader can identify:
+
+- What is already working well in the project
+- What is still experimental or uncertain
+- What validation is still needed
+- What the next practical steps should be
+
+For this repository, likely next steps include:
+
+1. Resolve the Playwright accessibility test environment issue.
+2. Validate key claims with real users, including screen reader users if possible.
+3. Review AI-generated or AI-assisted content for accuracy and consistency.
+4. Continue documenting supported workflows and limitations.
+
+## Review and sign-off expectations
+
+Before the report is considered done, the following still need human confirmation:
+
+- A maintainer agrees that the report reflects the project's current status fairly.
+- Any recommendations are prioritized and accepted, deferred, or rejected.
+- Any open questions that cannot be answered from the repository alone are called out explicitly.
+
+## Done checklist for this report
+
+- [x] Purpose can be stated from the repository
+- [x] Intended audience can be inferred from the repository
+- [x] Scope can be bounded to the current repository state
+- [x] Core claims can be supported with repository evidence
+- [x] Experimental status can be stated clearly
+- [x] Accessibility-first intent can be documented clearly
+- [x] Likely next steps can be identified
+- [ ] Maintainer review is complete
+- [ ] Final report language has been checked against the latest repository state
+- [ ] Any claims not directly supported by the repository have been removed or explicitly marked as unverified

@@ -22,7 +22,7 @@ The report is done when it accurately covers the current repository as it exists
 - Export support for Penpot-oriented prompting
 - Optional in-browser AI writing assistance using Chrome Built-in AI
 
-The report should not overstate maturity. The README already says the project is experimental and has not been fully validated in real-world use, so the report must preserve that limitation.
+The report should not overstate maturity. `README.md` already describes the project as experimental and not yet fully validated in real-world use, so the report must preserve that limitation.
 
 ## Findings the report can already state
 
@@ -50,7 +50,7 @@ The report is not done unless it makes these limits clear:
 - The project is still experimental.
 - AI-assisted and generated content appears in the project and has not been fully validated.
 - Accessibility intent is strong, but real-world validation is still needed.
-- A full local `npm test` run is currently blocked by a Playwright module error in the accessibility test path, so automated accessibility verification is not fully reliable in the present environment.
+- A full local `npm test` run is currently blocked by a Playwright dependency/module error in the accessibility test path, so automated accessibility verification is not fully reliable until that issue is resolved.
 
 ## Accessibility and inclusive design coverage
 
